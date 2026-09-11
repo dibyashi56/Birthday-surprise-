@@ -4,427 +4,447 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Hey Love ❤️</title>
+<title>Happy Birthday ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500;600;700&display=swap');
-
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
 body {
-    font-family: "Poppins", sans-serif;
-    background: white;
+    font-family: Arial, sans-serif;
     overflow: hidden;
+    background: #ffc4c8;
+    color: #111;
 }
 
-:root {
-    --pink: #ffc4c8;
-    --pink-dark: #ed7180;
-    --blue: #b9deea;
-    --red: #ed737c;
-}
-
-/* TOP PAGE NAVIGATION */
-
-.tabs {
-    height: 65px;
-    background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    overflow-x: auto;
-}
-
-.tabs button {
-    border: none;
-    background: transparent;
-    font-size: 20px;
-    color: #777;
-    cursor: pointer;
-}
-
-.tabs button.active {
-    color: black;
-    font-weight: bold;
-}
-
-/* MAIN */
-
-.book {
-    height: calc(100vh - 65px);
+/* MAIN WEBSITE */
+.site {
+    width: 100vw;
+    height: 100vh;
     position: relative;
     overflow: hidden;
-    background: var(--pink);
+    background: #ffc4c8;
 }
 
-/* WHITE SCALLOP BORDER */
-
-.book::before,
-.book::after {
-    content: "";
+/* WHITE SCALLOP BORDERS */
+.border {
     position: absolute;
     left: 0;
     right: 0;
-    height: 18px;
-    z-index: 10;
+    height: 25px;
+    z-index: 20;
     background:
-        radial-gradient(circle at 10px 0,
-        white 10px,
-        transparent 11px)
-        0 0 / 40px 20px repeat-x;
+        radial-gradient(
+            circle at 12px 0,
+            transparent 11px,
+            white 12px
+        ) 0 0 / 24px 24px repeat-x;
+    pointer-events: none;
 }
 
-.book::before {
+.border.top {
     top: 0;
-}
-
-.book::after {
-    bottom: 0;
     transform: rotate(180deg);
 }
 
-/* PAGES */
+.border.bottom {
+    bottom: 0;
+}
 
+/* LEFT HEARTS */
+.hearts-left {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    z-index: 2;
+    font-size: 48px;
+    line-height: 1;
+    opacity: .45;
+}
+
+.hearts-left span {
+    display: block;
+    transform: rotate(-12deg);
+    margin: 5px 0;
+}
+
+/* HANGING HEARTS */
+.hanging {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    z-index: 2;
+    opacity: .5;
+    font-size: 42px;
+    text-align: center;
+}
+
+.hanging div {
+    border-left: 2px solid rgba(220,85,100,.35);
+    width: 45px;
+    height: 45px;
+}
+
+.hanging span {
+    display: block;
+    margin-top: -5px;
+}
+
+/* PAGES */
 .page {
     position: absolute;
     inset: 0;
-    padding: 50px 5vw;
-    display: none;
-    overflow-y: auto;
-    animation: fade .4s ease;
+
+    padding: 55px 7vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: translateX(30px) scale(.98);
+
+    pointer-events: none;
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
 }
 
 .page.active {
-    display: block;
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
 }
 
-@keyframes fade {
-    from {
-        opacity: 0;
-        transform: scale(.98);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* TEXT */
-
+/* SCRIPT FONT */
 .script {
-    font-family: "Great Vibes", cursive;
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    color: #e85f79;
 }
 
+/* MAIN TITLE */
 .title {
-    text-align: center;
-    font-family: "Great Vibes", cursive;
-    font-size: clamp(65px, 9vw, 115px);
-    font-weight: normal;
-    margin-top: 20px;
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: clamp(58px, 9vw, 115px);
+    font-weight: 400;
+
+    color: #111;
+
+    margin-bottom: 25px;
 }
 
 .subtitle {
-    text-align: center;
-    color: var(--pink-dark);
-    font-family: "Great Vibes", cursive;
-    font-size: clamp(38px, 5vw, 65px);
-    margin: 40px auto;
+    font-size: clamp(25px, 3.4vw, 48px);
+    margin-bottom: 30px;
 }
 
-/* BUTTON */
+/* PAGE NAVIGATION */
+.nav {
+    position: absolute;
+    top: 14px;
+    right: 24px;
+    z-index: 30;
 
+    display: flex;
+    gap: 18px;
+
+    font-size: 18px;
+    color: #666;
+}
+
+.nav span {
+    cursor: pointer;
+}
+
+.nav .current {
+    color: #111;
+    font-weight: bold;
+}
+
+/* BUTTONS */
 .btn {
     border: none;
-    background: var(--blue);
-    color: black;
-    border-radius: 50px;
-    padding: 16px 55px;
-    font-size: 24px;
+
+    background: #b9dfeb;
+    color: #111;
+
+    border-radius: 40px;
+
+    padding: 17px 48px;
+
+    font-size: clamp(20px, 2.5vw, 34px);
+
     cursor: pointer;
-    transition: .25s;
+
+    margin: 10px;
+
+    box-shadow: 0 4px 0 rgba(0,0,0,.03);
+
+    transition:
+        transform .15s ease,
+        background .15s ease;
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 7px 15px rgba(0,0,0,.08);
+    background: #a9d6e4;
 }
 
-.center {
-    text-align: center;
-}
-
-/* HEARTS */
-
-.heart {
-    position: absolute;
-    color: var(--red);
-    z-index: 1;
-}
-
-.heart1 {
-    left: 4%;
-    top: 55%;
-    font-size: 55px;
-}
-
-.heart2 {
-    left: 3%;
-    bottom: 5%;
-    font-size: 100px;
-}
-
-.heart3 {
-    right: 4%;
-    top: 8%;
-    font-size: 55px;
-}
-
-.heart4 {
-    right: 2%;
-    top: 20%;
-    font-size: 70px;
-}
-
-.heart5 {
-    left: 8%;
-    bottom: 2%;
-    font-size: 40px;
+.btn:active {
+    transform: translateY(1px);
 }
 
 /* GIFT */
-
 .gift {
-    display: block;
-    width: 300px;
-    max-width: 60vw;
-    margin: 20px auto;
-}
+    width: min(270px, 35vw);
+    max-height: 300px;
 
-/* PAGE 2 & 3 BUTTONS */
-
-.choices {
-    max-width: 1050px;
-    margin: 100px auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 90px 220px;
-    justify-items: center;
-}
-
-.choices button:last-child {
-    grid-column: 1 / 3;
-}
-
-/* PAGE 4 */
-
-.memory {
-    max-width: 1200px;
-    margin: 40px auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 60px;
-}
-
-.memory img {
-    width: 100%;
-    max-height: 520px;
     object-fit: contain;
-    transform: rotate(-10deg);
-    filter: drop-shadow(0 8px 8px rgba(0,0,0,.15));
+
+    margin: 10px 0 20px;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(0 10px 10px rgba(0,0,0,.08));
+}
+
+/* QUESTIONS */
+.question {
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    color: #e85f79;
+
+    font-size: clamp(44px, 6vw, 78px);
+
+    margin-bottom: 60px;
+}
+
+/* ANSWERS */
+.choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 35px;
+
+    max-width: 900px;
+}
+
+/* CHAT IMAGE */
+.chat {
+    width: min(520px, 70vw);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.14);
+
+    transform: rotate(-7deg);
+
+    margin: 20px 50px 20px 0;
+}
+
+/* MEMORY */
+.memory-layout {
+    width: min(1150px, 92vw);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 65px;
+
+    flex-wrap: wrap;
 }
 
 .memory-text {
-    text-align: center;
-    font-size: 23px;
+    max-width: 530px;
+
+    font-size: clamp(19px, 2vw, 29px);
+
     line-height: 1.5;
 }
 
-.next {
-    text-align: right;
-}
-
-/* PAGE 5 */
-
-.page5 .subtitle {
-    margin-top: 150px;
-}
-
-.page5 .btn {
-    margin-top: 100px;
-}
-
-/* PAGE 6 */
-
+/* SMILE PAGE */
 .monkey {
-    display: block;
-    width: 420px;
-    max-width: 80%;
-    margin: 60px auto 40px;
-}
+    width: min(440px, 65vw);
 
-.page6 .btn {
-    min-width: 390px;
-}
+    max-height: 430px;
 
-/* PAGE 7 */
-
-.wait {
-    text-align: center;
-    font-family: Georgia, serif;
-    font-size: 65px;
-    font-weight: bold;
-    margin-top: 50px;
-}
-
-.page7 .subtitle {
-    margin-top: 80px;
-}
-
-.page7 .btn {
-    margin-top: 120px;
-}
-
-/* PAGE 8 */
-
-.final-title {
-    text-align: center;
-    font-family: Georgia, serif;
-    font-size: 65px;
-    font-weight: bold;
-}
-
-.final {
-    max-width: 1150px;
-    margin: 30px auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-}
-
-.final img {
-    width: 100%;
-    max-height: 510px;
     object-fit: contain;
+
+    border-radius: 8px;
+
+    margin: 10px 0 30px;
 }
 
-.message {
-    text-align: center;
+/* WAIT */
+.wait {
+    font-size: clamp(45px, 7vw, 82px);
+
+    font-weight: 900;
+
+    margin-bottom: 80px;
+}
+
+/* FINAL COLLAGE */
+.collage {
+    width: min(560px, 55vw);
+
+    max-height: 64vh;
+
+    object-fit: contain;
+
+    border: 1px solid #7d3d2c;
+
+    background: white;
+}
+
+/* FINAL PAGE */
+.final-layout {
+    width: min(1300px, 94vw);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 45px;
+
+    flex-wrap: wrap;
+}
+
+.final-message {
+    max-width: 620px;
+
+    font-size: clamp(18px, 2vw, 27px);
+
+    line-height: 1.45;
+}
+
+.final-message strong {
+    font-size: 1.15em;
+}
+
+/* MUSIC BUTTON */
+.music {
+    position: absolute;
+
+    left: 22px;
+    top: 22px;
+
+    z-index: 30;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: rgba(255,255,255,.55);
+
+    cursor: pointer;
+
     font-size: 20px;
-    line-height: 1.5;
 }
 
-.message b {
-    font-size: 27px;
+/* PAGE DOTS */
+.progress {
+    position: absolute;
+
+    bottom: 10px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 30;
+
+    display: flex;
+
+    gap: 7px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.5);
+
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #e85f79;
 }
 
 
 /* MOBILE */
-
-@media(max-width: 800px) {
-
-    body {
-        overflow: hidden;
-    }
-
-    .tabs {
-        height: 55px;
-        justify-content: flex-start;
-        gap: 15px;
-        padding: 0 10px;
-    }
-
-    .tabs button {
-        font-size: 13px;
-        white-space: nowrap;
-    }
-
-    .book {
-        height: calc(100vh - 55px);
-    }
+@media (max-width: 700px) {
 
     .page {
-        padding: 45px 20px;
+        padding: 45px 5vw;
     }
 
-    .title {
-        font-size: 65px;
+    .nav {
+        display: none;
     }
 
-    .subtitle {
-        font-size: 38px;
+    .memory-layout {
+        gap: 28px;
+    }
+
+    .chat {
+        width: min(420px, 78vw);
+        margin-right: 25px;
     }
 
     .choices {
-        grid-template-columns: 1fr;
-        gap: 25px;
-        margin-top: 70px;
-    }
-
-    .choices button:last-child {
-        grid-column: auto;
+        gap: 8px;
     }
 
     .btn {
-        font-size: 19px;
-        padding: 14px 35px;
+        padding: 14px 28px;
     }
 
-    .memory {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .collage {
+        width: min(88vw, 560px);
+        max-height: 52vh;
     }
 
-    .memory-text {
-        font-size: 16px;
+    .final-layout {
+        gap: 18px;
     }
 
-    .next {
-        text-align: center;
-    }
-
-    .page5 .subtitle {
-        margin-top: 120px;
-    }
-
-    .page6 .btn {
-        min-width: 250px;
-    }
-
-    .wait {
-        font-size: 48px;
-    }
-
-    .page7 .subtitle {
-        margin-top: 70px;
-    }
-
-    .page7 .btn {
-        margin-top: 100px;
-    }
-
-    .final-title {
-        font-size: 48px;
-    }
-
-    .final {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .message {
-        font-size: 16px;
-    }
-
-    .message b {
-        font-size: 22px;
+    .final-message {
+        font-size: 17px;
     }
 }
 </style>
@@ -433,93 +453,99 @@ body {
 
 <body>
 
-<!-- TOP NAVIGATION -->
+<div class="site">
 
-<nav class="tabs">
-
-    <button onclick="goToPage(0)">Page 1</button>
-    <button onclick="goToPage(1)">Page 2</button>
-    <button onclick="goToPage(2)">Page 3</button>
-    <button onclick="goToPage(3)">Page 4</button>
-    <button onclick="goToPage(4)">Page 5</button>
-    <button onclick="goToPage(5)">Page 6</button>
-    <button onclick="goToPage(6)">Page 7</button>
-    <button onclick="goToPage(7)">Page 8</button>
-
-</nav>
+    <!-- BORDERS -->
+    <div class="border top"></div>
+    <div class="border bottom"></div>
 
 
-<div class="book">
+    <!-- HANGING HEARTS -->
+    <div class="hanging">
+        <div></div>
+        <span>♥</span>
 
-    <!-- HEART DECORATIONS -->
+        <div style="height:25px"></div>
 
-    <div class="heart heart1">♥</div>
-    <div class="heart heart2">♥</div>
-    <div class="heart heart3">♥</div>
-    <div class="heart heart4">♥</div>
-    <div class="heart heart5">♥</div>
+        <span>♥</span>
+    </div>
 
 
-    <!-- PAGE 1 -->
+    <!-- LEFT HEARTS -->
+    <div class="hearts-left">
+        <span>♥</span>
+        <span style="font-size:25px">♥</span>
+        <span>♥</span>
+    </div>
+
+
+    <!-- MUSIC -->
+    <button class="music" id="musicBtn">
+        ♫
+    </button>
+
+
+    <!-- PAGE NAVIGATION -->
+    <div class="nav" id="nav">
+
+        <span data-go="0">Page 1</span>
+        <span data-go="1">Page 2</span>
+        <span data-go="2">Page 3</span>
+        <span data-go="3">Page 4</span>
+        <span data-go="4">Page 5</span>
+        <span data-go="5">Page 6</span>
+        <span data-go="6">Page 7</span>
+        <span data-go="7">Page 8</span>
+
+    </div>
+
+
+    <!-- ================= PAGE 1 ================= -->
 
     <section class="page active">
 
-        <h1 class="title">
+        <div class="title">
             Hey Love
-        </h1>
+        </div>
 
-        <h2 class="subtitle">
+        <div class="subtitle script">
             I have made something special for you ❤️
-        </h2>
+        </div>
 
         <img
             class="gift"
             src="assets/gift.png"
-            alt="Gift"
+            alt="Birthday Gift"
+            id="gift"
         >
 
-        <div class="center">
-
-            <button
-                class="btn"
-                onclick="goToPage(1)"
-            >
-                Click to open
-            </button>
-
-        </div>
+        <button class="btn" data-next>
+            Click to open
+        </button>
 
     </section>
 
 
-    <!-- PAGE 2 -->
+
+    <!-- ================= PAGE 2 ================= -->
 
     <section class="page">
 
-        <h2 class="subtitle">
+        <div class="question">
             Are you ready for this surprise? 👀
-        </h2>
+        </div>
 
         <div class="choices">
 
-            <button
-                class="btn"
-                onclick="goToPage(2)"
-            >
+            <button class="btn" data-next>
                 yes 😊
             </button>
 
-            <button
-                class="btn"
-                onclick="goToPage(2)"
-            >
+            <button class="btn" data-next>
                 Of course 😍
             </button>
 
-            <button
-                class="btn"
-                onclick="goToPage(2)"
-            >
+            <button class="btn" data-next>
                 No 😂
             </button>
 
@@ -528,34 +554,26 @@ body {
     </section>
 
 
-    <!-- PAGE 3 -->
+
+    <!-- ================= PAGE 3 ================= -->
 
     <section class="page">
 
-        <h2 class="subtitle">
-            Do you know how much i love you ? 👉👈
-        </h2>
+        <div class="question">
+            Do you know how much I love you? 👉👈
+        </div>
 
         <div class="choices">
 
-            <button
-                class="btn"
-                onclick="goToPage(3)"
-            >
+            <button class="btn" data-next>
                 A little 😒
             </button>
 
-            <button
-                class="btn"
-                onclick="goToPage(3)"
-            >
+            <button class="btn" data-next>
                 A lot 🥰
             </button>
 
-            <button
-                class="btn"
-                onclick="goToPage(3)"
-            >
+            <button class="btn" data-next>
                 Infinite 🥺
             </button>
 
@@ -564,20 +582,24 @@ body {
     </section>
 
 
-    <!-- PAGE 4 -->
+
+    <!-- ================= PAGE 4 ================= -->
 
     <section class="page">
 
-        <h2 class="subtitle">
-            Do you remember our first chat ? 💬
-        </h2>
+        <div class="question">
+            Do you remember our first chat? 💬
+        </div>
 
-        <div class="memory">
+
+        <div class="memory-layout">
 
             <img
+                class="chat"
                 src="assets/chat.png"
-                alt="First chat"
+                alt="Our First Chat"
             >
+
 
             <div class="memory-text">
 
@@ -596,128 +618,128 @@ body {
                 Memories became something I treasure.
                 <br>
 
-                And somehow, it became us. ❤️
+                And somehow, it became <b>us.</b> ❤️
 
             </div>
 
         </div>
 
-        <div class="next">
 
-            <button
-                class="btn"
-                onclick="goToPage(4)"
-            >
-                Next memory
-            </button>
-
-        </div>
+        <button class="btn" data-next>
+            Next memory
+        </button>
 
     </section>
 
 
-    <!-- PAGE 5 -->
 
-    <section class="page page5">
+    <!-- ================= PAGE 5 ================= -->
 
-        <h2 class="subtitle">
-            You know what i love the most 😉
-        </h2>
+    <section class="page">
 
-        <div class="center">
-
-            <button
-                class="btn"
-                onclick="goToPage(5)"
-            >
-                click to open
-            </button>
-
+        <div class="question">
+            You know what I love the most 😉
         </div>
+
+        <button class="btn" data-next>
+            click to open
+        </button>
 
     </section>
 
 
-    <!-- PAGE 6 -->
 
-    <section class="page page6">
+    <!-- ================= PAGE 6 ================= -->
 
-        <h2 class="subtitle">
+    <section class="page">
+
+        <div class="question">
             Your Smile 😇
-        </h2>
+        </div>
+
 
         <img
             class="monkey"
-            src="assets/monkey.png"
-            alt="Smile"
+            src="assets/page6.png"
+            alt="Funny Smile"
         >
 
-        <div class="center">
 
-            <button
-                class="btn"
-                onclick="goToPage(6)"
-            >
-                Next
-            </button>
-
-        </div>
+        <button class="btn" data-next>
+            Next
+        </button>
 
     </section>
 
 
-    <!-- PAGE 7 -->
 
-    <section class="page page7">
+    <!-- ================= PAGE 7 ================= -->
+
+    <section class="page">
 
         <div class="wait">
             WAIT....
         </div>
 
-        <h2 class="subtitle">
 
-            Isn't today is someone
-            very special's
+        <div
+            class="question"
+            style="margin-bottom:55px;"
+        >
+
+            Isn't today is someone very special's
             <br>
 
             Birthday? 🎂
 
-        </h2>
-
-        <div class="center">
-
-            <button
-                class="btn"
-                onclick="goToPage(7)"
-            >
-                Who?????
-            </button>
-
         </div>
+
+
+        <button class="btn" data-next>
+            Who?????
+        </button>
 
     </section>
 
 
-    <!-- PAGE 8 -->
+
+    <!-- ================= PAGE 8 ================= -->
 
     <section class="page">
 
-        <div class="final-title">
+        <div
+            class="question"
+            style="
+                color:#111;
+                font-family:Arial,sans-serif;
+                font-weight:900;
+                font-size:clamp(45px,6vw,75px);
+                margin-bottom:20px;
+            "
+        >
             YOU ❤️
         </div>
 
-        <div class="final">
+
+        <div class="final-layout">
+
+
+            <!-- YOUR COLLAGE -->
 
             <img
-                src="assets/collage.png"
-                alt="Birthday collage"
+                class="collage"
+                src="assets/birthday-collage.png"
+                alt="Birthday Couple Collage"
             >
 
-            <div class="message">
 
-                <b>
+            <!-- BIRTHDAY MESSAGE -->
+
+            <div class="final-message">
+
+                <strong>
                     Happy Birthday, My Love 🖤
-                </b>
+                </strong>
 
                 <br><br>
 
@@ -733,17 +755,19 @@ body {
                 <br><br>
 
                 Thank you for being my comfort,
-                my favorite notification,
-                and the most beautiful part of my life. 🫶❤️
+                my favorite notification, and the most
+                beautiful part of my life. 🫶❤️
 
                 <br><br>
 
                 Here's to more memories,
                 more laughter, and more love together. 🥂✨
 
-                <br>
+                <br><br>
 
-                Happy Birthday, sweetheart. ❤️
+                <b>
+                    Happy Birthday, sweetheart. ❤️
+                </b>
 
             </div>
 
@@ -751,46 +775,245 @@ body {
 
     </section>
 
+
+
+    <!-- PAGE DOTS -->
+
+    <div
+        class="progress"
+        id="progress"
+    ></div>
+
 </div>
+
 
 
 <script>
 
-const pages = document.querySelectorAll(".page");
-const tabs = document.querySelectorAll(".tabs button");
+/* GET ALL PAGES */
 
-let currentPage = 0;
+const pages =
+    [...document.querySelectorAll(".page")];
 
 
-function goToPage(number) {
+/* PAGE DOT CONTAINER */
 
-    currentPage = number;
+const dots =
+    document.getElementById("progress");
 
-    pages.forEach((page, index) => {
+
+/* CURRENT PAGE */
+
+let current = 0;
+
+
+/* CREATE DOTS */
+
+pages.forEach((page, index) => {
+
+    const dot =
+        document.createElement("span");
+
+    dot.className =
+        "dot" + (index === 0 ? " active" : "");
+
+    dot.addEventListener(
+        "click",
+        () => goTo(index)
+    );
+
+    dots.appendChild(dot);
+
+});
+
+
+/* CHANGE PAGE */
+
+function goTo(index) {
+
+    current =
+        Math.max(
+            0,
+            Math.min(
+                pages.length - 1,
+                index
+            )
+        );
+
+
+    pages.forEach((page, i) => {
 
         page.classList.toggle(
             "active",
-            index === currentPage
+            i === current
         );
 
     });
 
 
-    tabs.forEach((tab, index) => {
+    [...dots.children].forEach(
+        (dot, i) => {
 
-        tab.classList.toggle(
-            "active",
-            index === currentPage
-        );
+            dot.classList.toggle(
+                "active",
+                i === current
+            );
 
-    });
+        }
+    );
+
+
+    document
+        .querySelectorAll("#nav span")
+        .forEach((navItem, i) => {
+
+            navItem.classList.toggle(
+                "current",
+                i === current
+            );
+
+        });
 
 }
 
 
-// Start on Page 1
+/* NEXT BUTTONS */
 
-goToPage(0);
+document
+    .querySelectorAll("[data-next]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => goTo(current + 1)
+        );
+
+    });
+
+
+/* CLICK GIFT */
+
+document
+    .getElementById("gift")
+    .addEventListener(
+        "click",
+        () => goTo(1)
+    );
+
+
+/* TOP PAGE NAVIGATION */
+
+document
+    .querySelectorAll("#nav span")
+    .forEach(item => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                goTo(
+                    Number(item.dataset.go)
+                );
+
+            }
+
+        );
+
+    });
+
+
+/* KEYBOARD */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "ArrowRight" ||
+            event.key === " "
+        ) {
+
+            goTo(current + 1);
+
+        }
+
+
+        if (
+            event.key === "ArrowLeft"
+        ) {
+
+            goTo(current - 1);
+
+        }
+
+    }
+);
+
+
+/* BUTTON CLICK SOUND */
+
+let audioCtx = null;
+
+
+document.addEventListener(
+    "click",
+    event => {
+
+        if (
+            !event.target.closest(
+                "button, .gift, .nav span, .dot"
+            )
+        ) {
+            return;
+        }
+
+
+        if (!audioCtx) {
+
+            audioCtx =
+                new (
+                    window.AudioContext ||
+                    window.webkitAudioContext
+                )();
+
+        }
+
+
+        const oscillator =
+            audioCtx.createOscillator();
+
+        const gain =
+            audioCtx.createGain();
+
+
+        oscillator.frequency.value = 660;
+
+
+        gain.gain.setValueAtTime(
+            .025,
+            audioCtx.currentTime
+        );
+
+
+        gain.gain.exponentialRampToValueAtTime(
+            .001,
+            audioCtx.currentTime + .08
+        );
+
+
+        oscillator.connect(gain);
+
+        gain.connect(audioCtx.destination);
+
+
+        oscillator.start();
+
+        oscillator.stop(
+            audioCtx.currentTime + .08
+        );
+
+    }
+);
 
 </script>
 
