@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f8cdd1;
+    text-align:center;
+}
+.page{
+    display:none;
+    min-height:100vh;
+    padding:40px 20px;
+}
+.active{
+    display:block;
+}
+h1{
+    color:#ff4f8b;
+}
+button{
+    padding:12px 30px;
+    font-size:20px;
+    border:none;
+    border-radius:25px;
+    background:#cde7f2;
+    cursor:pointer;
+    margin-top:20px;
+}
+img{
+    max-width:300px;
+    border-radius:15px;
+}
+.heart{
+    font-size:40px;
+}
+</style>
+</head>
+<body>
+<div class="page active" id="page1">
+    <h1>Hey Love ❤️</h1>
+    <p>I have made something special for you ❤️</p>
+    <button onclick="showPage(2)">Click to Open</button>
+</div>
+<script>
+function showPage(page){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page'+page).classList.add('active');
+}
+</script>
+</body>
+</html>
