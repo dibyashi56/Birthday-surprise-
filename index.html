@@ -1,57 +1,798 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday ❤️</title>
+
+<title>Hey Love ❤️</title>
 
 <style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f8cdd1;
-    text-align:center;
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.page{
-    display:none;
-    min-height:100vh;
-    padding:40px 20px;
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: white;
+    overflow: hidden;
 }
-.active{
-    display:block;
+
+:root {
+    --pink: #ffc4c8;
+    --pink-dark: #ed7180;
+    --blue: #b9deea;
+    --red: #ed737c;
 }
-h1{
-    color:#ff4f8b;
+
+/* TOP PAGE NAVIGATION */
+
+.tabs {
+    height: 65px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    overflow-x: auto;
 }
-button{
-    padding:12px 30px;
-    font-size:20px;
-    border:none;
-    border-radius:25px;
-    background:#cde7f2;
-    cursor:pointer;
-    margin-top:20px;
+
+.tabs button {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    color: #777;
+    cursor: pointer;
 }
-img{
-    max-width:300px;
-    border-radius:15px;
+
+.tabs button.active {
+    color: black;
+    font-weight: bold;
 }
-.heart{
-    font-size:40px;
+
+/* MAIN */
+
+.book {
+    height: calc(100vh - 65px);
+    position: relative;
+    overflow: hidden;
+    background: var(--pink);
+}
+
+/* WHITE SCALLOP BORDER */
+
+.book::before,
+.book::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 18px;
+    z-index: 10;
+    background:
+        radial-gradient(circle at 10px 0,
+        white 10px,
+        transparent 11px)
+        0 0 / 40px 20px repeat-x;
+}
+
+.book::before {
+    top: 0;
+}
+
+.book::after {
+    bottom: 0;
+    transform: rotate(180deg);
+}
+
+/* PAGES */
+
+.page {
+    position: absolute;
+    inset: 0;
+    padding: 50px 5vw;
+    display: none;
+    overflow-y: auto;
+    animation: fade .4s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* TEXT */
+
+.script {
+    font-family: "Great Vibes", cursive;
+}
+
+.title {
+    text-align: center;
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(65px, 9vw, 115px);
+    font-weight: normal;
+    margin-top: 20px;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--pink-dark);
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(38px, 5vw, 65px);
+    margin: 40px auto;
+}
+
+/* BUTTON */
+
+.btn {
+    border: none;
+    background: var(--blue);
+    color: black;
+    border-radius: 50px;
+    padding: 16px 55px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(0,0,0,.08);
+}
+
+.center {
+    text-align: center;
+}
+
+/* HEARTS */
+
+.heart {
+    position: absolute;
+    color: var(--red);
+    z-index: 1;
+}
+
+.heart1 {
+    left: 4%;
+    top: 55%;
+    font-size: 55px;
+}
+
+.heart2 {
+    left: 3%;
+    bottom: 5%;
+    font-size: 100px;
+}
+
+.heart3 {
+    right: 4%;
+    top: 8%;
+    font-size: 55px;
+}
+
+.heart4 {
+    right: 2%;
+    top: 20%;
+    font-size: 70px;
+}
+
+.heart5 {
+    left: 8%;
+    bottom: 2%;
+    font-size: 40px;
+}
+
+/* GIFT */
+
+.gift {
+    display: block;
+    width: 300px;
+    max-width: 60vw;
+    margin: 20px auto;
+}
+
+/* PAGE 2 & 3 BUTTONS */
+
+.choices {
+    max-width: 1050px;
+    margin: 100px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px 220px;
+    justify-items: center;
+}
+
+.choices button:last-child {
+    grid-column: 1 / 3;
+}
+
+/* PAGE 4 */
+
+.memory {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.memory img {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    transform: rotate(-10deg);
+    filter: drop-shadow(0 8px 8px rgba(0,0,0,.15));
+}
+
+.memory-text {
+    text-align: center;
+    font-size: 23px;
+    line-height: 1.5;
+}
+
+.next {
+    text-align: right;
+}
+
+/* PAGE 5 */
+
+.page5 .subtitle {
+    margin-top: 150px;
+}
+
+.page5 .btn {
+    margin-top: 100px;
+}
+
+/* PAGE 6 */
+
+.monkey {
+    display: block;
+    width: 420px;
+    max-width: 80%;
+    margin: 60px auto 40px;
+}
+
+.page6 .btn {
+    min-width: 390px;
+}
+
+/* PAGE 7 */
+
+.wait {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 65px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.page7 .subtitle {
+    margin-top: 80px;
+}
+
+.page7 .btn {
+    margin-top: 120px;
+}
+
+/* PAGE 8 */
+
+.final-title {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 65px;
+    font-weight: bold;
+}
+
+.final {
+    max-width: 1150px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.final img {
+    width: 100%;
+    max-height: 510px;
+    object-fit: contain;
+}
+
+.message {
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.message b {
+    font-size: 27px;
+}
+
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    .tabs {
+        height: 55px;
+        justify-content: flex-start;
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .tabs button {
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .book {
+        height: calc(100vh - 55px);
+    }
+
+    .page {
+        padding: 45px 20px;
+    }
+
+    .title {
+        font-size: 65px;
+    }
+
+    .subtitle {
+        font-size: 38px;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 70px;
+    }
+
+    .choices button:last-child {
+        grid-column: auto;
+    }
+
+    .btn {
+        font-size: 19px;
+        padding: 14px 35px;
+    }
+
+    .memory {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .memory-text {
+        font-size: 16px;
+    }
+
+    .next {
+        text-align: center;
+    }
+
+    .page5 .subtitle {
+        margin-top: 120px;
+    }
+
+    .page6 .btn {
+        min-width: 250px;
+    }
+
+    .wait {
+        font-size: 48px;
+    }
+
+    .page7 .subtitle {
+        margin-top: 70px;
+    }
+
+    .page7 .btn {
+        margin-top: 100px;
+    }
+
+    .final-title {
+        font-size: 48px;
+    }
+
+    .final {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .message {
+        font-size: 16px;
+    }
+
+    .message b {
+        font-size: 22px;
+    }
 }
 </style>
 </head>
+
+
 <body>
-<div class="page active" id="page1">
-    <h1>Hey Love ❤️</h1>
-    <p>I have made something special for you ❤️</p>
-    <button onclick="showPage(2)">Click to Open</button>
+
+<!-- TOP NAVIGATION -->
+
+<nav class="tabs">
+
+    <button onclick="goToPage(0)">Page 1</button>
+    <button onclick="goToPage(1)">Page 2</button>
+    <button onclick="goToPage(2)">Page 3</button>
+    <button onclick="goToPage(3)">Page 4</button>
+    <button onclick="goToPage(4)">Page 5</button>
+    <button onclick="goToPage(5)">Page 6</button>
+    <button onclick="goToPage(6)">Page 7</button>
+    <button onclick="goToPage(7)">Page 8</button>
+
+</nav>
+
+
+<div class="book">
+
+    <!-- HEART DECORATIONS -->
+
+    <div class="heart heart1">♥</div>
+    <div class="heart heart2">♥</div>
+    <div class="heart heart3">♥</div>
+    <div class="heart heart4">♥</div>
+    <div class="heart heart5">♥</div>
+
+
+    <!-- PAGE 1 -->
+
+    <section class="page active">
+
+        <h1 class="title">
+            Hey Love
+        </h1>
+
+        <h2 class="subtitle">
+            I have made something special for you ❤️
+        </h2>
+
+        <img
+            class="gift"
+            src="assets/gift.png"
+            alt="Gift"
+        >
+
+        <div class="center">
+
+            <button
+                class="btn"
+                onclick="goToPage(1)"
+            >
+                Click to open
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 2 -->
+
+    <section class="page">
+
+        <h2 class="subtitle">
+            Are you ready for this surprise? 👀
+        </h2>
+
+        <div class="choices">
+
+            <button
+                class="btn"
+                onclick="goToPage(2)"
+            >
+                yes 😊
+            </button>
+
+            <button
+                class="btn"
+                onclick="goToPage(2)"
+            >
+                Of course 😍
+            </button>
+
+            <button
+                class="btn"
+                onclick="goToPage(2)"
+            >
+                No 😂
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 3 -->
+
+    <section class="page">
+
+        <h2 class="subtitle">
+            Do you know how much i love you ? 👉👈
+        </h2>
+
+        <div class="choices">
+
+            <button
+                class="btn"
+                onclick="goToPage(3)"
+            >
+                A little 😒
+            </button>
+
+            <button
+                class="btn"
+                onclick="goToPage(3)"
+            >
+                A lot 🥰
+            </button>
+
+            <button
+                class="btn"
+                onclick="goToPage(3)"
+            >
+                Infinite 🥺
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 4 -->
+
+    <section class="page">
+
+        <h2 class="subtitle">
+            Do you remember our first chat ? 💬
+        </h2>
+
+        <div class="memory">
+
+            <img
+                src="assets/chat.png"
+                alt="First chat"
+            >
+
+            <div class="memory-text">
+
+                It started with one little message. ❤️
+                <br>
+
+                A simple hello, yet so special.
+                <br>
+
+                A few words became endless conversations. ✨
+                <br>
+
+                Conversations became beautiful memories.
+                <br>
+
+                Memories became something I treasure.
+                <br>
+
+                And somehow, it became us. ❤️
+
+            </div>
+
+        </div>
+
+        <div class="next">
+
+            <button
+                class="btn"
+                onclick="goToPage(4)"
+            >
+                Next memory
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 5 -->
+
+    <section class="page page5">
+
+        <h2 class="subtitle">
+            You know what i love the most 😉
+        </h2>
+
+        <div class="center">
+
+            <button
+                class="btn"
+                onclick="goToPage(5)"
+            >
+                click to open
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 6 -->
+
+    <section class="page page6">
+
+        <h2 class="subtitle">
+            Your Smile 😇
+        </h2>
+
+        <img
+            class="monkey"
+            src="assets/monkey.png"
+            alt="Smile"
+        >
+
+        <div class="center">
+
+            <button
+                class="btn"
+                onclick="goToPage(6)"
+            >
+                Next
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 7 -->
+
+    <section class="page page7">
+
+        <div class="wait">
+            WAIT....
+        </div>
+
+        <h2 class="subtitle">
+
+            Isn't today is someone
+            very special's
+            <br>
+
+            Birthday? 🎂
+
+        </h2>
+
+        <div class="center">
+
+            <button
+                class="btn"
+                onclick="goToPage(7)"
+            >
+                Who?????
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 8 -->
+
+    <section class="page">
+
+        <div class="final-title">
+            YOU ❤️
+        </div>
+
+        <div class="final">
+
+            <img
+                src="assets/collage.png"
+                alt="Birthday collage"
+            >
+
+            <div class="message">
+
+                <b>
+                    Happy Birthday, My Love 🖤
+                </b>
+
+                <br><br>
+
+                In a world full of people,
+                my heart found you. 🌙 ❤️
+
+                <br><br>
+
+                May your day be filled with soft moments,
+                genuine smiles, and everything that makes
+                your soul happy. ✨🌷
+
+                <br><br>
+
+                Thank you for being my comfort,
+                my favorite notification,
+                and the most beautiful part of my life. 🫶❤️
+
+                <br><br>
+
+                Here's to more memories,
+                more laughter, and more love together. 🥂✨
+
+                <br>
+
+                Happy Birthday, sweetheart. ❤️
+
+            </div>
+
+        </div>
+
+    </section>
+
 </div>
+
+
 <script>
-function showPage(page){
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page'+page).classList.add('active');
+
+const pages = document.querySelectorAll(".page");
+const tabs = document.querySelectorAll(".tabs button");
+
+let currentPage = 0;
+
+
+function goToPage(number) {
+
+    currentPage = number;
+
+    pages.forEach((page, index) => {
+
+        page.classList.toggle(
+            "active",
+            index === currentPage
+        );
+
+    });
+
+
+    tabs.forEach((tab, index) => {
+
+        tab.classList.toggle(
+            "active",
+            index === currentPage
+        );
+
+    });
+
 }
+
+
+// Start on Page 1
+
+goToPage(0);
+
 </script>
+
 </body>
 </html>
